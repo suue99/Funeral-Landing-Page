@@ -15,7 +15,8 @@ html {
 body {
   /* outline: red 1px solid; */
   font-family: Montserrat;
-  background-image: url("images/background3.webp");
+  background-image: url("images/background.webp");
+  background-repeat: no-repeat;
 }
 
 nav {
@@ -33,38 +34,39 @@ nav {
   align-items: center;
   justify-content: space-evenly;
   background-color: transparent;
-  height: 9.6rem;
+  height: 6rem;
   padding: 0 4.8rem;
 }
 
 .main-nav-list {
   list-style: none;
   display: flex;
-  align-items: center;
-  gap: 3.2rem;
+  justify-content: space-between;
+  /* align-items: center; */
+  gap: 16rem;
 }
 
 .main-nav-link:link,
 .main-nav-link:visited {
   display: inline-block;
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   transition: all 0.3s;
 }
 
 .main-nav-link:active,
 .main-nav-link:hover {
-  color: #e67322;
+  color: #efbf04;
 }
 
 .main-nav-link.nav-cta:link,
 .main-nav-link.nav-cta:visited {
   padding: 1.2rem 2.4rem;
-  border-radius: 9px;
+  border-radius: 0.9rem;
   color: #fff;
-  background-color: #e67322;
+  background-color: #efbf04;
 }
 
 .main-nav-link.nav-cta:hover,
@@ -79,6 +81,7 @@ nav {
   margin-top: -1rem;
   font-size: 1.6rem;
   color: black;
+  cursor: pointer;
   background-color: #efbf04;
   border: none;
 }
@@ -92,40 +95,49 @@ nav {
   display: none;
 }
 
-.fa-solid {
+.icon-mobile-nav {
+  margin-top: 5rem;
   height: 4.8rem;
   width: 4.8rem;
-  color: #e6dcdc;
+  color: #fffafa;
 }
 
-.closeIcon {
+.icon-mobile-nav[name="menu-outline"] {
+  display: block;
+}
+
+.icon-mobile-nav[name="close-outline"] {
   display: none;
 }
 
 /*Hero Section*/
 .hero-section {
   height: 100vh;
-
   padding-left: 14rem;
   /* position: relative; */
+}
+
+.hero-image {
+  max-width: 20rem;
 }
 
 .hero-image img {
   /* position: absolute; */
   /* left: 35%;
   top: 14rem; */
-  height: 56rem;
-  max-width: 100%;
+  /* height: 56rem; */
+  /* max-width: 100%; */
+  height: auto;
   padding: 4rem;
   border: #8f7304 solid 3px;
   border-radius: 50%;
 }
 
 .hero-text {
-  align-self: center;
+  /* align-self: center;
 
   color: #be9c13;
-  text-align: center;
+  text-align: center; */
 }
 
 .hero-header {
@@ -142,26 +154,28 @@ nav {
 }
 
 .hero-container {
-  display: flex;
+  /* display: flex;
   gap: 8rem;
   padding-top: 8rem;
-  /* padding-left: 4rem; */
+  padding-left: 4rem; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-@media (max-width: 78em) {
+/* @media (max-width: 78em) {
   .hero-image img {
     height: 48rem;
   }
-}
+} */
 
 @media (max-width: 69em) {
   .hero-container {
     padding: 10rem;
   }
 
-  .hero-image img {
+  /* .hero-image img {
     height: 78rem;
-  }
+  } */
 
   .hero-section {
     height: 140vh;
@@ -175,18 +189,72 @@ nav {
     color: #efbf04;
   }
 
-  .hero-container {
+  /* .hero-container {
+    flex-direction: column-reverse;
+  } */
+
+  .btn-mobile-nav {
+    display: block;
+    z-index: 1000;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.411);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+
+    /* Hide Navigation */
+    /* hide it visually */
+    opacity: 0;
+
+    /* hIde from keyboard and mouse */
+    pointer-events: none;
+
+    /* hide from screen readers */
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
     flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
   }
 }
 
-@media (max-width: 63em) {
+/* @media (max-width: 63em) {
   .hero-image img {
     height: 68rem;
   }
-}
+} */
 
-@media (max-width: 57em) {
+/* @media (max-width: 57em) {
   .hero-image img {
     height: 60rem;
     margin-left: 4rem;
@@ -213,4 +281,4 @@ nav {
   .hero-image img {
     padding: 2rem;
   }
-}
+} */
