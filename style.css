@@ -50,7 +50,7 @@ nav {
 .main-nav-link:visited {
   display: inline-block;
   text-decoration: none;
-  color: #fff;
+  color: #333;
   font-weight: 500;
   font-size: 1.6rem;
   transition: all 0.3s;
@@ -113,6 +113,7 @@ nav {
 /*Hero Section*/
 .hero-section {
   height: 100vh;
+
   padding-left: 14rem;
   /* position: relative; */
 }
@@ -125,9 +126,8 @@ nav {
   /* position: absolute; */
   /* left: 35%;
   top: 14rem; */
-  /* height: 56rem; */
-  /* max-width: 100%; */
-  height: auto;
+  height: 56rem;
+  max-width: 100%;
   padding: 4rem;
   border: #8f7304 solid 3px;
   border-radius: 50%;
@@ -154,15 +154,13 @@ nav {
 }
 
 .hero-container {
-  /* display: flex;
+  display: flex;
   gap: 8rem;
   padding-top: 8rem;
-  padding-left: 4rem; */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* padding-left: 4rem; */
 }
 
-/* @media (max-width: 78em) {
+@media (max-width: 78em) {
   .hero-image img {
     height: 48rem;
   }
@@ -248,7 +246,7 @@ nav {
   }
 }
 
-/* @media (max-width: 63em) {
+@media (max-width: 63em) {
   .hero-image img {
     height: 68rem;
   }
