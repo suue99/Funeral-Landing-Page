@@ -1,33 +1,13 @@
-// console.log("hello world");
+console.log("hello world");
 
-// set current year
-const yearEl = document.querySelector(".year");
-const currentYear = new Date().getFullYear();
-yearEl.textContent = currentYear;
+const btnNavEL = document.querySelector(".btn-mobile-nav");
+const headerEl = document.querySelector("header");
 
-/////////////
-
-const btnNavEl = document.querySelector(".btn-mobile-nav");
-const headerEl = document.querySelector(".header");
-const menuIcon = document.querySelector(
-  '.icon-mobile-nav[name="menu-outline"]'
-);
-const closeIcon = document.querySelector(
-  '.icon-mobile-nav[name="close-outline"]'
-);
-
-btnNavEl.addEventListener("click", function () {
+btnNavEL.addEventListener("click", function () {
   headerEl.classList.toggle("nav-open");
-
-  // Toggle visibility of the icons
-  if (headerEl.classList.contains("nav-open")) {
-    menuIcon.style.display = "none";
-    closeIcon.style.display = "block";
-  } else {
-    menuIcon.style.display = "block";
-    closeIcon.style.display = "none";
-  }
 });
+
+console.log("JavaScript is linked correctly.");
 
 // smooth scrolling
 // const allLinks = document.querySelectorAll("a:link");
