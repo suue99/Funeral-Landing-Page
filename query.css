@@ -10,10 +10,16 @@
 
   .hero-text {
     text-align: center;
+    color: #efbf04;
   }
 
   .hero-header {
-    font-size: 3.8rem;
+    font-size: 3rem;
+  }
+
+  .hero-date {
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
   }
 
   /*---------------- NAV SECTION ------------------*/
@@ -21,11 +27,6 @@
   /*---------------- NAV SECTION ------------------*/
 
   .btn-mobile-nav {
-    /* display: block;
-    position: relative;
-    left: 30rem;
-    z-index: 1000; */
-
     display: block; /* Ensure it is visible in mobile view */
     position: absolute;
     top: 3rem;
@@ -38,7 +39,7 @@
   }
 
   .main-nav {
-    background-color: rgba(248, 248, 248, 0.789);
+    background-color: rgba(207, 207, 207, 0.789);
     position: absolute;
     top: 0;
     left: 0;
@@ -82,14 +83,21 @@
 
   .main-nav-link:link,
   .main-nav-link:visited {
-    font-size: 3rem;
+    font-size: 2.4rem;
     color: #000;
     font-weight: 700;
+  }
+
+  .main-nav-link:active,
+  .main-nav-link:hover {
+    color: #e8bc0d;
+  }
+
+  .form-container {
+    padding: 3.6rem;
   }
 }
 
 .hero-text {
-  /* align-self: center; */
   font-size: 1.8rem;
-  color: #efbf04;
 }
