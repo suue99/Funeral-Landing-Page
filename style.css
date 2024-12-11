@@ -16,9 +16,25 @@ html {
 body {
   /* outline: red 1px solid; */
   font-family: Montserrat;
-  background-image: url("images/background3.webp");
-  background-repeat: no-repeat;
+  /* background-image: url("images/background.webp");
+  background-repeat: no-repeat; */
+  position: relative;
+  overflow: hidden;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("images/background.webp");
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  z-index: -1;
 }
 
 nav {
@@ -32,6 +48,10 @@ nav {
 }
 
 /*---------------- NAV SECTION ------------------*/
+/* .container {
+  background-image: url("images/background.webp");
+  background-repeat: no-repeat;
+} */
 
 .header {
   display: flex;
@@ -188,5 +208,5 @@ nav {
   padding: 3rem;
 }
 .tributes-text {
-  color: #fff;
+  color: #999595;
 }

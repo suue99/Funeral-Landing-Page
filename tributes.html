@@ -31,21 +31,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="images/favicon.ico" />
-    <title>Elijah Akinyemi</title>
+    <title>Tributes</title>
 
     <script
       src="https://kit.fontawesome.com/dafa6859c8.js"
       crossorigin="anonymous"
     ></script>
     <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="form.css" />
     <link rel="stylesheet" href="query.css" />
+
     <script defer src="script.js"></script>
   </head>
+
   <body>
     <header class="header">
       <nav class="main-nav">
         <ul class="main-nav-list">
-          <li><a class="main-nav-link" href="#">Home</a></li>
+          <li><a class="main-nav-link" href="index.html">Home</a></li>
           <li><a class="main-nav-link" href="tributes.html">Tributes </a></li>
           <li>
             <a class="main-nav-link" href="mailto:hello@reveoakinyemi.com">
@@ -61,53 +64,52 @@
       </button>
     </header>
 
-    <section class="hero-section">
-      <div class="hero-container">
-        <div class="hero-image">
-          <img src="images/resized.webp" alt="image of a man" />
+    <section class="container">
+      <form id="contact" action="" method="post">
+        <h3>Tributes</h3>
+        <fieldset>
+          <input
+            placeholder="Your full name"
+            type="text"
+            tabindex="1"
+            required
+            autofocus
+          />
+        </fieldset>
+
+        <div class="dropdown">
+          <label for="select-where">
+            <span class="dropdown-text">Relationship</span></label
+          >
+          <select id="select-where" required>
+            <option value="">Please choose an option</option>
+            <option value="friends">Family</option>
+            <option value="youtube">Friend</option>
+            <option value="podcast">Church</option>
+            <option value="facebook">Work</option>
+            <option value="other">Other</option>
+          </select>
         </div>
 
-        <!-- HERO SECTION -->
-
-        <div class="hero-text">
-          <h2 class="hero-header">Rev. Elijah Oluranti Akinyemi</h2>
-          <h3 class="hero-date">15th June, 1956 - 29th November, 2024</h3>
-          <p class="hero-quote">A light that will never fade</p>
-        </div>
-      </div>
+        <fieldset>
+          <textarea
+            placeholder="Type your Message Here...."
+            tabindex="5"
+            required
+          ></textarea>
+        </fieldset>
+        <fieldset>
+          <button
+            name="submit"
+            type="submit"
+            id="contact-submit"
+            data-submit="...Sending"
+          >
+            Submit
+          </button>
+        </fieldset>
+      </form>
     </section>
-
-    <!-- TRIBUTES SECTION -->
-
-    <!-- <section class="tributes-section">
-      <div>
-        <h1 class="section-title">Tributes</h1>
-      </div>
-      <div class="tributes-container">
-        <div class="tributes-card">
-          <div class="tributes-text">
-            <h3 class="tributes-header">Tribute1</h3>
-            <p class="tributes-paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis
-              voluptatibus repellendus illum! Sit hic cupiditate exercitationem
-              nam provident voluptatibus dolor, tempora, aut corrupti,
-              consectetur eos temporibus molestiae iusto tenetur perspiciatis?
-            </p>
-          </div>
-        </div>
-        <div class="tributes-card">
-          <div class="tributes-text">
-            <h3 class="tributes-header">Tribute1</h3>
-            <p class="tributes-paragraph">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure
-              minima accusantium consectetur vero nulla fugiat adipisci
-              quisquam, deserunt, provident voluptatem ducimus impedit, fugit
-              consequuntur omnis nostrum voluptates aut? Suscipit, ipsam?
-            </p>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
     <script
       type="module"
