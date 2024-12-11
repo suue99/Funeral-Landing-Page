@@ -134,7 +134,7 @@ nav {
 /*---------------- HERO SECTION ------------------*/
 /*---------------- HERO SECTION ------------------*/
 .hero-section {
-  /* height: 110vh; */
+  height: 110vh;
   padding: 6rem;
   justify-content: center;
   align-items: center;

@@ -3,6 +3,9 @@
     grid-template-columns: 1fr;
     margin-top: 1rem;
   }
+  .hero-section {
+    height: 130rem;
+  }
 
   .hero-image {
     grid-row: 2 / 3;
@@ -106,5 +109,17 @@
 @media (max-width: 52em) {
   .hero-image {
     margin-left: 1rem;
+  }
+}
+
+@media (max-width: 523px) {
+  .hero-section {
+    height: 100rem;
+  }
+}
+
+@media (max-width: 386px) {
+  .hero-section {
+    height: 80rem;
   }
 }
