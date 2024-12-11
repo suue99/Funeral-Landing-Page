@@ -134,7 +134,7 @@ nav {
 /*---------------- HERO SECTION ------------------*/
 /*---------------- HERO SECTION ------------------*/
 .hero-section {
-  height: 100vh;
+  height: 105vh;
   padding: 6rem;
   justify-content: center;
   align-items: center;
@@ -144,8 +144,8 @@ nav {
 .hero-container {
   max-width: 1280px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
   margin-top: 4rem;
 }
 
@@ -180,6 +180,13 @@ nav {
 .hero-quote {
   font-size: 2.4rem;
   font-family: Sacramento;
+}
+
+.funeral-details {
+  align-self: center;
+  color: #be9c13;
+  text-align: center;
+  font-size: 1.8rem;
 }
 
 /*---------------- TRIBUTES SECTION ------------------*/
