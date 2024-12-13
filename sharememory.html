@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Funeral website for the dearly departed"
+      content="In Loving Memory | Rev Elijah O. Akinyemi"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,15 +31,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="images/favicon.ico" />
-    <title>Tributes</title>
+    <title>Submit Tributes</title>
 
     <script
       src="https://kit.fontawesome.com/dafa6859c8.js"
       crossorigin="anonymous"
     ></script>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="form.css" />
-    <link rel="stylesheet" href="query.css" />
 
     <script defer src="script.js"></script>
   </head>
@@ -65,12 +62,13 @@
     </header>
 
     <section class="form-container">
-      <form id="contact" action="" method="post">
-        <h3>Tributes</h3>
+      <form id="contact" action="submit_tribute.php" method="post" enctype="multipart/form-data">
+        <h3>Submit Your Tribute</h3>
         <fieldset>
           <input
             placeholder="Your full name"
             type="text"
+            name="name"
             tabindex="1"
             required
             autofocus
@@ -81,12 +79,12 @@
           <label for="select-where">
             <span class="dropdown-text">Relationship</span></label
           >
-          <select id="select-where" required>
+          <select id="select-where" name="relationship" required>
             <option value="">Please choose an option</option>
-            <option value="friends">Family</option>
-            <option value="youtube">Friend</option>
-            <option value="podcast">Church</option>
-            <option value="facebook">Work</option>
+            <option value="family">Family</option>
+            <option value="friend">Friend</option>
+            <option value="church">Church</option>
+            <option value="work">Work</option>
             <option value="other">Other</option>
           </select>
         </div>
@@ -94,10 +92,22 @@
         <fieldset>
           <textarea
             placeholder="Type your Message Here...."
+            name="message"
             tabindex="5"
             required
           ></textarea>
         </fieldset>
+
+        <fieldset>
+          <label for="image-upload">Share picture memory (optional):</label>
+          <input
+            type="file"
+            id="image-upload"
+            name="image"
+            accept="image/*"
+          />
+        </fieldset>
+
         <fieldset>
           <button
             name="submit"
@@ -105,7 +115,7 @@
             id="contact-submit"
             data-submit="...Sending"
           >
-            Submit
+            Submit Tribute
           </button>
         </fieldset>
       </form>

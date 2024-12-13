@@ -1,0 +1,62 @@
+/* General Reset */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333; /* Background for the navbar */
+  }
+  
+  li {
+    float: left; /* Align items horizontally */
+  }
+  
+  /* Links and Dropdown Button */
+  li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Hover Effect for Links */
+  li a:hover, .dropdown:hover .dropbtn {
+    background-color: #efbf04; /* Highlight color */
+  }
+  
+  /* Dropdown Container */
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  /* Dropdown Content Styling */
+  .dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark dropdown background */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  /* Dropdown Links */
+  .dropdown-content a {
+    color: white; /* Link color */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Hover Effect for Dropdown Links */
+  .dropdown-content a:hover {
+    background-color: #efbf04;
+    color: #333;
+  }
+  
+  /* Show Dropdown on Hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
