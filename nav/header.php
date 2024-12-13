@@ -1,10 +1,6 @@
 <header class="header">
 
-  <!-- Hamburger Menu Button -->
-  <button class="btn-mobile-nav">
-    <ion-icon name="menu-outline" class="icon-mobile-nav"></ion-icon>
-    <ion-icon name="close-outline" class="icon-mobile-nav" style="display: none;"></ion-icon>
-  </button>
+ 
 
   <!-- Navigation -->
   <nav>
@@ -18,7 +14,15 @@
         </ul>
       </li>
     </ul>
+
+
+    <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
   </nav>
+
+  
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +36,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/query.css">
   <link rel="stylesheet" href="css/form.css">
-  <link rel="stylesheet" href="css/mobile-nav.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 
   <!-- JavaScript -->
   <script defer src="script.js"></script>
