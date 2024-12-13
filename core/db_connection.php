@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "eoa_admin";
-$password = "7Thunder$";
-$dbname = "tributes_db";
+$username = "revelukf_admin";
+$password = "7Thunder$!56";
+$dbname = "revelukf_tributes";
 
 // Create and check database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
