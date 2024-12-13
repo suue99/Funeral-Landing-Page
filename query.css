@@ -6,6 +6,19 @@
   .hero-header {
     font-size: 2.8rem;
   }
+
+  .footer-link {
+    color: white !important;
+    font-size: 1.8rem !important;
+    margin-left: -10rem !important;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 4rem;
+  }
 }
 
 @media (max-width: 63em) {

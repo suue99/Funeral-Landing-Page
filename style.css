@@ -135,7 +135,7 @@ nav {
 /*---------------- HERO SECTION ------------------*/
 /*---------------- HERO SECTION ------------------*/
 .hero-section {
-  height: 110vh;
+  height: 70vh;
   padding: 6rem;
   justify-content: center;
   align-items: center;
@@ -147,13 +147,14 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4rem;
-  margin-top: 16rem;
-  margin-left: 7rem;
+  margin-top: 6rem;
+  margin-left: 4rem;
 }
 
 .hero-image {
   max-width: 84rem;
   align-self: center;
+  margin-left: 4rem;
 }
 
 .hero-image img {
@@ -168,58 +169,45 @@ nav {
 }
 
 .hero-header {
-  font-family: Sofia;
+  font-family: Montserrat;
   font-size: 4rem;
   margin-bottom: 4rem;
 }
 
 .hero-date {
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 1.8rem;
 }
 
 .hero-quote {
   font-size: 2.4rem;
   font-family: Sacramento;
+  text-align: center;
+  margin-top: 2rem;
+  color: #fad14b;
 }
 
 .funeral-details {
   align-self: center;
   color: #fad14b;
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .funeral-details h5 {
-  font-size: 4rem;
-  font-family: Sofia;
+  font-size: 3.2rem;
+  margin-bottom: 2rem;
+  font-family: Montserrat;
 }
 
-/*---------------- TRIBUTES SECTION ------------------*/
-/*---------------- TRIBUTES SECTION ------------------*/
-/*---------------- TRIBUTES SECTION ------------------*/
-.section-title {
-  color: #ffffff;
-  font-family: Sacramento;
-  text-align: center;
-  font-size: 8rem;
-}
-
-.tributes-section {
-  padding: 5rem 9.6rem;
-  margin-top: 8rem;
-  /* background-color: #fff; */
-}
-.tributes-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.tributes-card {
-  border: 1px white solid;
-  padding: 3rem;
-}
-.tributes-text {
-  color: #999595;
+/*---------------- FOOTER SECTION ------------------*/
+/*---------------- FOOTER SECTION ------------------*/
+/*---------------- FOOTER SECTION ------------------*/
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 12rem;
+  padding-bottom: 5rem;
+  padding-right: 6rem;
 }
