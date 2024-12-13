@@ -1,11 +1,10 @@
 <header class="header">
-
- 
-
   <!-- Navigation -->
   <nav>
     <ul class="main-nav-list">
-      <li><a class="main-nav-link" href="index.php">Home</a></li>
+      <li>
+        <a class="main-nav-link" href="index.php">Home</a>
+      </li>
       <li class="dropdown">
         <a class="main-nav-link" href="javascript:void(0)">Tributes</a>
         <ul class="dropdown-menu">
@@ -15,31 +14,52 @@
       </li>
     </ul>
 
-
+    <!-- Mobile Navigation Button -->
     <button class="btn-mobile-nav">
-        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-      </button>
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button>
   </nav>
 
-  
-
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
+    rel="stylesheet"
+  >
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/tributes.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/query.css">
   <link rel="stylesheet" href="css/form.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Responsive Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- JavaScript -->
   <script defer src="script.js"></script>
 
+  <script
+      src="https://kit.fontawesome.com/dafa6859c8.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
 </header>
