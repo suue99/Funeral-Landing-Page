@@ -68,7 +68,7 @@ nav {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 10rem;
+  gap: 5rem;
 }
 
 .main-nav-link:link,
@@ -111,6 +111,63 @@ nav {
   border: none;
 }
 
+
+/* Dropdown Styling */
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown .dropdown-menu {
+  visibility: hidden; /* Start hidden */
+  opacity: 0; /* Fully transparent */
+  position: absolute;
+  top: calc(100% + 10px); /* Position below the trigger */
+  left: 0;
+  min-width: 200px; /* Ensure consistent width */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  border-radius: 0.5rem;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  z-index: 200;
+  transform: translateY(-10px); /* Slightly off-screen for animation */
+  transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  visibility: visible; /* Make visible */
+  opacity: 1; /* Fully opaque */
+  transform: translateY(0); /* Slide into place */
+}
+
+.dropdown .dropdown-menu li {
+  margin: 0;
+  width: 100%; /* Full width of dropdown */
+}
+
+.dropdown .dropdown-menu li a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%; /* Ensure full width of dropdown */
+  box-sizing: border-box;
+}
+
+.dropdown .dropdown-menu li a:hover {
+  background-color: #efbf04; /* Highlighted background */
+  color: #333; /* Contrast text color */
+  border-radius: 0.3rem;
+}
+
+
 /*---------------- NAV SECTION ------------------*/
 /* MOBILE */
 /*---------------- NAV SECTION ------------------*/
@@ -135,11 +192,12 @@ nav {
 /*---------------- HERO SECTION ------------------*/
 /*---------------- HERO SECTION ------------------*/
 .hero-section {
-  height: 70vh;
-  padding: 6rem;
-  justify-content: center;
-  align-items: center;
-  /* margin-bottom: 20rem; */
+  height: 70vh; /* Full viewport height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0 4rem; /* Add padding for spacing */
+  text-align: center;
 }
 
 .hero-container {
@@ -148,18 +206,25 @@ nav {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4rem;
   margin-top: 6rem;
-  margin-left: 4rem;
+  margin-left: 6rem;
+  align-items: center; /* Vertically align items */
 }
 
 .hero-image {
-  max-width: 84rem;
-  align-self: center;
-  margin-left: 4rem;
+  display: flex;
+  flex-direction: column; /* Stack the image and quote vertically */
+  align-items: center; /* Center align image and quote */
+  justify-content: center; /* Center content vertically */
+  text-align: center;
 }
 
 .hero-image img {
-  /* padding: 4rem; */
-  width: 100%;
+  width: 100%; /* Ensure image scales with container */
+  max-width: 350px; /* Set maximum width for image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular image */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
+  margin-bottom: 1.5rem; /* Space between image and quote */
 }
 
 .hero-text {
