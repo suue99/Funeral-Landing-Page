@@ -12,13 +12,12 @@ $bannerImage = $bannerImageQuery->num_rows > 0 ? $bannerImageQuery->fetch_assoc(
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tributes | Rev Elijah O. Akinyemi</title>
 
 </head>
+<?php include 'nav/header.php'; ?>
+
 <body>
-    <?php include 'nav/header.php'; ?>
     
     <!-- Banner Section -->
     <div class="banner">
@@ -76,4 +75,7 @@ $bannerImage = $bannerImageQuery->num_rows > 0 ? $bannerImageQuery->fetch_assoc(
 </div>
 
 </body>
+
+<?php include 'nav/footer.php'; ?>
+
 </html>

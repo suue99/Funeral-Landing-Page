@@ -32,12 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Submitted Tribute</title>
 </head>
+<?php include 'nav/header.php'; ?>
+
 <body>
-    <?php include 'nav/header.php'; ?>
 
     <section class="preview-container">
         <h3>Your Submitted Tribute</h3>
@@ -58,6 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
 
     </section>
 
-    <?php include 'footer.php'; ?>
 </body>
+
+<?php include 'nav/footer.php'; ?>
+
 </html>

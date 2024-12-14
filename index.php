@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Funeral website for the dearly departed" />
-
-    <title>Elijah Akinyemi</title>
-    <?php include 'nav/header.php'; ?>
-
-  </head>
-
-  <body>
+  
+<?php include 'nav/header.php'; ?>
+    <body>
+ 
 
     <!-- HERO SECTION -->
     <section class="hero-section">
@@ -37,6 +30,7 @@
 
    
   </body>
+
 
   <?php include 'nav/footer.php'; ?>
 </html>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Share Memory</title>
 </head>
+<?php include 'nav/header.php'; ?>
+
 <body>
-    <?php include 'nav/header.php'; ?>
     
     <section class="form-container">
         <form id="tribute-form" action="submit_tribute.php" method="post" enctype="multipart/form-data" onsubmit="return previewTribute(event)">
@@ -100,6 +99,8 @@
         }
     </script>
     
-    <?php include 'footer.php'; ?>
 </body>
+
+<?php include 'footer.php'; ?>
+
 </html>
