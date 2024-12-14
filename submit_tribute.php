@@ -2,35 +2,68 @@
 include 'core/db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = htmlspecialchars($_POST['name']);
-    $relationship = htmlspecialchars($_POST['relationship']);
-    $message = htmlspecialchars($_POST['message']);
-    $location = isset($_POST['location']) ? htmlspecialchars($_POST['location']) : null;
-    $church_name = isset($_POST['church_name']) ? htmlspecialchars($_POST['church_name']) : null;
+    // Sanitize and validate input data
+    $name = htmlspecialchars(trim($_POST['name']));
+    $location = htmlspecialchars(trim($_POST['location']));
+    $church_name = htmlspecialchars(trim($_POST['church_name']));
+    $relationship = htmlspecialchars(trim($_POST['relationship']));
+    $message = htmlspecialchars(trim($_POST['message']));
+    $status = 'pending'; // Default status is 'pending'
+    $reference = uniqid(); // Generate a unique reference ID
 
-    // Handle file upload if an image is provided
+    // Initialize variables
     $imagePath = null;
-    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = 'uploads/';
-        $fileName = uniqid() . '-' . basename($_FILES['image']['name']);
-        $uploadFile = $uploadDir . $fileName;
+    $uploadError = '';
 
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
-            $imagePath = $uploadFile;
+    // Handle image upload if provided
+    if (!empty($_FILES['image']['name'])) {
+        $imageName = basename($_FILES['image']['name']);
+        $fileTmpPath = $_FILES['image']['tmp_name'];
+        $fileSize = $_FILES['image']['size'];
+        $fileType = $_FILES['image']['type'];
+        $fileExtension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+        // Validate file type
+        if (in_array($fileExtension, $allowedExtensions)) {
+            // Set the upload path
+            $uploadDir = 'uploads/';
+            $newFileName = uniqid() . '.' . $fileExtension; // Ensure unique file name
+            $imagePath = $uploadDir . $newFileName;
+
+            // Move uploaded file to the target directory
+            if (!move_uploaded_file($fileTmpPath, $imagePath)) {
+                $uploadError = "Failed to upload the image. Please try again.";
+            }
+        } else {
+            $uploadError = "Invalid file type. Allowed types are: " . implode(', ', $allowedExtensions);
         }
     }
 
-    // Insert the data into the tributes table
-    $stmt = $conn->prepare("INSERT INTO tributes (name, relationship, message, location, church_name, image, status) VALUES (?, ?, ?, ?, ?, ?, 'pending')");
-    $stmt->bind_param("ssssss", $name, $relationship, $message, $location, $church_name, $imagePath);
+    // Handle database insertion
+    if (empty($uploadError)) {
+        try {
+            // Prepare the SQL query
+            $stmt = $conn->prepare("INSERT INTO tributes (name, location, church_name, relationship, message, image, status, reference) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param('ssssssss', $name, $location, $church_name, $relationship, $message, $imagePath, $status, $reference);
 
-    if ($stmt->execute()) {
-        echo "Your tribute has been submitted for approval.";
+            // Execute the query
+            if ($stmt->execute()) {
+                // Redirect to preview page with reference
+                header("Location: preview.php?reference=$reference");
+                exit();
+            } else {
+                throw new Exception("Database insertion failed. Please try again.");
+            }
+        } catch (Exception $e) {
+            echo "<p>Error: " . $e->getMessage() . "</p>";
+        } finally {
+            $stmt->close();
+            $conn->close();
+        }
     } else {
-        echo "There was an error submitting your tribute. Please try again.";
+        // Display upload error if any
+        echo "<p>Error: $uploadError</p>";
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>

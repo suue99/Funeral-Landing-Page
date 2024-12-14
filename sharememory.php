@@ -1,114 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="In Loving Memory | Rev Elijah O. Akinyemi"
-    />
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/favicon.ico" />
-    <title>Submit Tributes</title>
-    <script
-      src="https://kit.fontawesome.com/dafa6859c8.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <script defer src="script.js"></script>
-  </head>
-
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Memory</title>
+</head>
+<body>
     <?php include 'nav/header.php'; ?>
-
+    
     <section class="form-container">
-  <form id="contact" action="submit_tribute.php" method="post" enctype="multipart/form-data">
-    <h3>Submit Your Tribute</h3>
-    <fieldset>
-      <input
-        placeholder="Your full name"
-        type="text"
-        name="name"
-        tabindex="1"
-        required
-        autofocus
-      />
-    </fieldset>
+        <form id="tribute-form" action="submit_tribute.php" method="post" enctype="multipart/form-data" onsubmit="return previewTribute(event)">
+            <h3>Submit Your Tribute</h3>
+            <fieldset>
+                <input type="text" name="name" placeholder="Your full name" required>
+            </fieldset>
+            <fieldset>
+                <input type="text" name="location" placeholder="Your location" required>
+            </fieldset>
+            <fieldset>
+                <input type="text" name="church_name" placeholder="Church name (optional)">
+            </fieldset>
+            <fieldset>
+                <select name="relationship" required>
+                    <option value="">Select Relationship</option>
+                    <option value="Family">Family</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Church">Church</option>
+                    <option value="Work">Work</option>
+                    <option value="Other">Other</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <textarea name="message" placeholder="Type your message here..." required></textarea>
+            </fieldset>
+            <fieldset>
+                <input type="file" name="image" accept="image/*">
+            </fieldset>
+            <fieldset>
+                <button type="submit">Preview Tribute</button>
+            </fieldset>
+        </form>
+        
+        <div id="preview-section" style="display: none; margin-top: 20px;">
+            <h3>Preview Your Tribute</h3>
+            <div id="preview-content"></div>
+            <button onclick="confirmSubmission()">Confirm Submission</button>
+            <button onclick="editSubmission()">Edit Tribute</button>
+        </div>
+    </section>
 
-    <div class="dropdown">
-      <label for="select-where">
-        <span class="dropdown-text">Relationship</span></label
-      >
-      <select id="select-where" name="relationship" required>
-        <option value="">Please choose an option</option>
-        <option value="family">Family</option>
-        <option value="friend">Friend</option>
-        <option value="church">Church</option>
-        <option value="work">Work</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
+    <script>
+        function previewTribute(event) {
+            event.preventDefault();
 
-    <fieldset>
-      <textarea
-        placeholder="Type your Message Here...."
-        name="message"
-        tabindex="5"
-        required
-      ></textarea>
-    </fieldset>
+            const form = document.getElementById('tribute-form');
+            const previewSection = document.getElementById('preview-section');
+            const previewContent = document.getElementById('preview-content');
 
-    <fieldset>
-      <input
-        placeholder="Your location (optional)"
-        type="text"
-        name="location"
-        tabindex="6"
-      />
-    </fieldset>
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const location = formData.get('location');
+            const churchName = formData.get('church_name') || 'Not provided';
+            const relationship = formData.get('relationship');
+            const message = formData.get('message');
 
-    <fieldset>
-      <input
-        placeholder="Church Name (optional)"
-        type="text"
-        name="church_name"
-        tabindex="7"
-      />
-    </fieldset>
+            let imagePreview = '';
+            if (formData.get('image').name) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 200px;">`;
+                    updatePreview();
+                };
+                reader.readAsDataURL(formData.get('image'));
+            } else {
+                updatePreview();
+            }
 
-    <fieldset>
-      <label for="image-upload">Share picture memory (optional):</label>
-      <input
-        type="file"
-        id="image-upload"
-        name="image"
-        accept="image/*"
-      />
-    </fieldset>
+            function updatePreview() {
+                previewContent.innerHTML = `
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Location:</strong> ${location}</p>
+                    <p><strong>Church Name:</strong> ${churchName}</p>
+                    <p><strong>Relationship:</strong> ${relationship}</p>
+                    <p><strong>Message:</strong> ${message}</p>
+                    ${imagePreview}
+                `;
+                previewSection.style.display = 'block';
+                form.style.display = 'none';
+            }
+        }
 
-    <fieldset>
-      <button
-        name="submit"
-        type="submit"
-        id="contact-submit"
-        data-submit="...Sending"
-      >
-        Submit Tribute
-      </button>
-    </fieldset>
-  </form>
-</section>
+        function confirmSubmission() {
+            document.getElementById('tribute-form').submit();
+        }
 
-
-    <?php include 'nav/footer.php'; ?>
-
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-  </body>
+        function editSubmission() {
+            document.getElementById('tribute-form').style.display = 'block';
+            document.getElementById('preview-section').style.display = 'none';
+        }
+    </script>
+    
+    <?php include 'footer.php'; ?>
+</body>
 </html>
