@@ -42,7 +42,7 @@ body {
 }
 
 .banner-image {
-  max-width: 150px; /* Set a reasonable maximum width for the image */
+  max-width: 300px; /* Set a reasonable maximum width for the image */
   margin-left: 2rem; /* Add space between text and image */
 }
 

@@ -7,10 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars(trim($_POST['username']));
     $password = htmlspecialchars(trim($_POST['password']));
 
-    // Debug: Check inputs
-    echo "Username: $username<br>";
-    echo "Password: $password<br>";
-
     // Fetch admin details
     $stmt = $conn->prepare("SELECT * FROM admin_users WHERE username = ?");
     $stmt->bind_param('s', $username);
@@ -18,33 +14,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
     $admin = $result->fetch_assoc();
 
-    // Debug: Check if admin exists
-    if ($admin) {
-        echo "Admin Found: " . htmlspecialchars($admin['username']) . "<br>";
-        echo "Stored Password: " . htmlspecialchars($admin['password']) . "<br>";
+    // Check if admin exists and password matches
+    if ($admin && $password === $admin['password']) {
+        // Store session data
+        $_SESSION['logged_in'] = true;
+        $_SESSION['admin_id'] = $admin['id'];
+        $_SESSION['username'] = $admin['username'];
+        $_SESSION['role'] = 'admin';  // Added role for admin.php check
 
-        // Check the password
-        if ($password === $admin['password']) {
-            echo "Password matched!<br>";
-
-            // Store session data
-            $_SESSION['logged_in'] = true;
-            $_SESSION['admin_id'] = $admin['id'];
-            $_SESSION['username'] = $admin['username'];
-
-            // Redirect to admin panel
-            header("Location: admin.php");
-            exit();
-        } else {
-            echo "Password mismatch!<br>";
-        }
+        // Redirect to admin panel
+        header("Location: admin.php");
+        exit();
     } else {
-        echo "Admin not found!<br>";
+        $error = "Invalid username or password";
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Admin Login</h1>
+    <?php if (isset($error)): ?>
+        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
     <form method="POST" action="login.php">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" required>
@@ -63,5 +51,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </body>
 </html>
-
-

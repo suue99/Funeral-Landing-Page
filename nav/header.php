@@ -45,13 +45,15 @@
       <nav class="main-nav">
         <ul class="main-nav-list">
           <li><a class="main-nav-link" href="index.php">Home</a></li>
-          <li class="dropdown">
+          <li><a class="main-nav-link" href="tributes.php">Tributes</a></li>
+
+          <!-- <li class="dropdown">
         <a class="main-nav-link" href="javascript:void(0)">Tributes</a>
         <ul class="dropdown-menu">
           <li><a href="tributes.php">View Tributes</a></li>
           <li><a href="sharememory.php">Submit Tribute</a></li>
         </ul>
-      </li>
+      </li> -->
         </ul>
       </nav>
 
