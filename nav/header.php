@@ -1,8 +1,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta
-      name="description"
-      content="Funeral website for the dearly departed"
+      name="Memorial Website"
+      content="Rev. Elijah O. Akinyemi's Memorial"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
