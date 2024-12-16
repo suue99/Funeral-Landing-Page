@@ -1,24 +1,34 @@
 <?php
 include 'core/db_connection.php';
 
-// Fetch approved tributes
-$result = $conn->query("SELECT * FROM tributes WHERE status='approved'");
+// Fetch approved tributes in descending order by submission date
+$result = $conn->query("SELECT * FROM tributes WHERE status='approved' ORDER BY created_at DESC");
 
-// Fetch the banner image from the database or fallback to a default
-$bannerImageQuery = $conn->query("SELECT image_path FROM banners WHERE banner_type='tribute' LIMIT 1");
-$bannerImage = $bannerImageQuery->num_rows > 0 ? $bannerImageQuery->fetch_assoc()['image_path'] : 'default-banner.jpg';
+// Fetch a random ID from the banners table
+$randomIdQuery = $conn->query("SELECT id FROM banners WHERE banner_type='tribute' ORDER BY RAND() LIMIT 1");
+
+if ($randomIdQuery->num_rows > 0) {
+    $randomId = $randomIdQuery->fetch_assoc()['id'];
+
+    // Use the random ID to fetch the corresponding image_path
+    $bannerImageQuery = $conn->query("SELECT image_path FROM banners WHERE id=$randomId LIMIT 1");
+    $bannerImage = $bannerImageQuery->num_rows > 0 ? $bannerImageQuery->fetch_assoc()['image_path'] : 'default-banner.jpg';
+} else {
+    // Fallback to a default image if no records are found
+    $bannerImage = 'images/hero-image.png';
+}
+
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tributes | Rev Elijah O. Akinyemi</title>
 
 </head>
+<?php include 'nav/header.php'; ?>
+
 <body>
-    <?php include 'nav/header.php'; ?>
     
     <!-- Banner Section -->
     <div class="banner">
@@ -31,49 +41,43 @@ $bannerImage = $bannerImageQuery->num_rows > 0 ? $bannerImageQuery->fetch_assoc(
         </div>
     </div>
 
+    <!-- Leave a Tribute Button -->
+    <div class="banner-button">
+        <a href="sharememory.php" class="cta-button">Leave a Tribute</a>
+    </div>
+
     <!-- Tributes Section -->
     <div class="tributes-container">
-    <h1>Tributes</h1>
-    <?php if ($result->num_rows > 0): ?>
-        <div class="tributes-container">
-            <?php while ($row = $result->fetch_assoc()): ?>
-                <div class="tribute">
-                    <h2>
-                        <?= htmlspecialchars($row['name']) ?> (<?= htmlspecialchars($row['relationship']) ?>)
-                        <?php
-                        // Concatenate location and church name
-                        $additionalInfo = [];
-                        if (!empty($row['location'])) {
-                            $additionalInfo[] = htmlspecialchars($row['location']);
-                        }
-                        if (!empty($row['church_name'])) {
-                            $additionalInfo[] = htmlspecialchars($row['church_name']);
-                        }
-                        if (!empty($additionalInfo)) {
-                            echo "<span> | " . implode(", ", $additionalInfo) . "</span>";
-                        }
-                        ?>
-                    </h2>
-                    <p><?= htmlspecialchars($row['message']) ?></p>
-                    <?php if ($row['image']): ?>
-    <a href="#modal-<?= $row['id'] ?>">
-        <img src="<?= htmlspecialchars($row['image']) ?>" alt="Tribute Image">
-    </a>
-    <!-- Modal -->
-    <div id="modal-<?= $row['id'] ?>" class="modal">
-        <a href="#" class="modal-close">&times;</a>
-        <img src="<?= htmlspecialchars($row['image']) ?>" alt="Full Tribute Image">
+        <h1>Tributes</h1>
+        <?php if ($result->num_rows > 0): ?>
+            <div class="tributes-list">
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="tribute">
+                        <h2>
+                            <?= htmlspecialchars($row['name']) ?> (<?= htmlspecialchars($row['relationship']) ?>)
+                        </h2>
+                        <p class="tribute-date"><?= date('F j, Y', strtotime($row['created_at'])) ?></p>
+                        <p><?= htmlspecialchars($row['message']) ?></p>
+                        <?php if ($row['image']): ?>
+                            <a href="#modal-<?= $row['id'] ?>">
+                                <img src="<?= htmlspecialchars($row['image']) ?>" alt="Tribute Image" class="tribute-thumbnail">
+                            </a>
+                            <!-- Modal -->
+                            <div id="modal-<?= $row['id'] ?>" class="modal">
+                                <a href="#" class="modal-close">&times;</a>
+                                <img src="<?= htmlspecialchars($row['image']) ?>" alt="Full Tribute Image">
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <hr>
+                <?php endwhile; ?>
+            </div>
+        <?php else: ?>
+            <p>No submitted tributes yet.</p>
+        <?php endif; ?>
     </div>
-<?php endif; ?>
-
-                </div>
-                <hr>
-            <?php endwhile; ?>
-        </div>
-    <?php else: ?>
-        <p>No submitted tributes yet.</p>
-    <?php endif; ?>
-</div>
-
+    <?php include 'nav/footer.php'; ?>
 </body>
+
+
 </html>
