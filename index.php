@@ -6,9 +6,11 @@
     <meta name="description" content="Funeral website for the dearly departed" />
 
     <title>Elijah Akinyemi</title>
-  </head>
-  <body>
     <?php include 'nav/header.php'; ?>
+
+  </head>
+
+  <body>
 
     <!-- HERO SECTION -->
     <section class="hero-section">
@@ -33,6 +35,8 @@
       </div>
     </section>
 
-    <?php include 'nav/footer.php'; ?>
+   
   </body>
+
+  <?php include 'nav/footer.php'; ?>
 </html>
